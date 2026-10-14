@@ -4,8 +4,7 @@ import {
   Score, 
   initialGameState, 
   initialScore, 
-  applyMove, 
-  togglePlayer 
+  applyMove
 } from '../lib/game';
 
 export interface UseGameState {
@@ -45,16 +44,15 @@ export function useGameState(): UseGameState {
     const currentState = state;
     
     // Check if winner changed
-    if (currentState.winner !== null && currentState.winner !== prevState.winner) {
-      setScore(prev => ({
-        ...prev,
-        [currentState.winner.toLowerCase() as 'x' | 'o']: prev[currentState.winner.toLowerCase() as 'x' | 'o'] + 1
-      }));
+    const winner = currentState.winner;
+    if (winner !== null && winner !== prevState.winner) {
+      const key = winner.toLowerCase() as 'x' | 'o';
+      setScore(prev => ({ ...prev, [key]: prev[key] + 1 }));
     }
     
     // Update the ref
     prevStateRef.current = currentState;
-  }, [state.winner, score]);
+  }, [state]);
 
   const placeMark = (index: number) => {
     if (state.board[index] === null) {

@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { 
-  Player, Cell, Board, GameState, Score, 
+  Board, GameState, 
   WINNING_LINES, initialGameState, initialScore, 
   togglePlayer, checkWinner, isBoardFull, applyMove 
 } from './game';

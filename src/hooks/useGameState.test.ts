@@ -1,6 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
 import { useGameState } from './useGameState';
-import { GameState, Score } from '../lib/game';
 
 describe('useGameState', () => {
   test('initial state is empty board, currentPlayer X', () => {
